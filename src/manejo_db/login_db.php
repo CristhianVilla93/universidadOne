@@ -50,10 +50,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["correo"]) && isset($_
                 header("location:\src\alumno\alumno.php");
             }
         } else {
-            header("location:\src\index.php");
+            header("location:\index.php");
         }
     } else {
-        header("Location:\src\index.php");
+        header("Location:\index.php");
     }
 }
 

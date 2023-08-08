@@ -12,7 +12,7 @@
     <section class="bg-[rgba(255,245,210,255)] h-screen flex justify-center items-center content-center ">
         <div class="flex justify-center items-center flex-col content-center" >
             <img class="w-96" src="/IMG/logo2.jpg" alt="logo">
-            <form class="bg-white w-80 flex justify-center items-center flex-col gap-3 p-4" action=".\manejo_db\login_db.php" method="post">
+            <form class="bg-white w-80 flex justify-center items-center flex-col gap-3 p-4" action="/src/manejo_db/login_db.php" method="post">
 
                 <h1 class="text-[rgba(104,102,100,0.84)] p-3">Bienvenido Ingresa con tu cuenta</h1>
 

@@ -1,0 +1,30 @@
+nav > ul{
+    height: 60px;
+    border-block-end: solid 1px;
+   
+}
+
+nav > ul > li:last-child{
+    cursor: pointer;
+    position: relative;
+}
+
+
+#cuadrodesple{
+ 
+    transform: scale(0);
+    transition: 0.4s all;
+
+
+}
+
+#cuadrodesple > ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#cuadrodesple.active{
+    transform: scale(1);
+}

@@ -44,7 +44,7 @@ var_dump($_SESSION["maes"]);
                 <a class="flex  items-center content-center gap-3" href="#"><img src="/IMG/alumnos.svg" alt="">Alumnos</a>          
             </div>
         </div>
-        <div class="w-[1200px] ">
+        <div class="w-full ">
             <nav class="w-full ">
                 <ul class="w-full flex justify-between p-3">
                     <li class="flex  items-center content-center gap-3"><img src="/IMG/menu.svg" alt="">Home</li>

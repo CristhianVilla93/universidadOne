@@ -1,14 +1,12 @@
 <?php
 
 session_start();
-// var_dump($_SESSION["admi"]);
 
 if (!isset($_SESSION["admi"])) {
     require("nonauthorized.php");
     die();
 }
 
-var_dump($_SESSION["admi"]);
 
 ?>
 
@@ -44,11 +42,11 @@ var_dump($_SESSION["admi"]);
                 <h1 class="text-center">MENU ADMINISTRACION</h1>
                 <a class="flex  items-center content-center gap-3" href="#"><img src="/IMG/permisos.svg" alt="">Permisos</a>
                 <a class="flex  items-center content-center gap-3" href="#"><img src="/IMG/maestros.svg" alt="">Maestros</a>
-                <a class="flex  items-center content-center gap-3" href="#"><img src="/IMG/alumnos.svg" alt="">Alumnos</a>
+                <a class="flex  items-center content-center gap-3" href="/src/administrador/alumnos/connection/connection_alumnos.php"><img src="/IMG/alumnos.svg" alt="">Alumnos</a>
                 <a class="flex  items-center content-center gap-3" href="#"><img src="/IMG/clases.svg" alt="">Clases</a>
             </div>
         </div>
-        <div class="w-[1200px] ">
+        <div class="w-full ">
             <nav class="w-full ">
                 <ul class="w-full flex justify-between p-3">
                     <li class="flex  items-center content-center gap-3"><img src="/IMG/menu.svg" alt="">Home</li>
@@ -58,7 +56,7 @@ var_dump($_SESSION["admi"]);
 
                         <div class="text-center" id="cuadrodesple">
                             <ul>
-                                <li><a href="#"> <span>Home</span></a> / <a href="#"> <span>Dashboard</span></li>
+                                <li><a href="#"> <span>Home</span></a> / <a href="/src/administrador/admin.php"> <span>Dashboard</span></li>
                             </ul>
                             <a href="/src/logout.php"> <span>Logout</span></a>
                         </div>

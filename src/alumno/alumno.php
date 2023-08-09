@@ -47,7 +47,7 @@ var_dump($_SESSION["alum"]);
              
             </div>
         </div>
-        <div class="w-[1200px] ">
+        <div class="w-full">
             <nav class="w-full ">
                 <ul class="w-full flex justify-between p-3">
                     <li class="flex  items-center content-center gap-3"><img src="/IMG/menu.svg" alt="">Home</li>

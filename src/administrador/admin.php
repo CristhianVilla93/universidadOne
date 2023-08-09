@@ -8,6 +8,8 @@ if (!isset($_SESSION["admi"])) {
     die();
 }
 
+var_dump($_SESSION["admi"]);
+
 ?>
 
 <!DOCTYPE html>

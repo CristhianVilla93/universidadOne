@@ -62,7 +62,9 @@ $filas = ($_SESSION["admin_alum"]);
                 </ul>
             </nav>
             <div class="p-3">
-                <h1 >Lista de Alumnos</h1>
+                <div class="h-10 flex content-center">
+                    <h1 >Lista de Alumnos</h1>
+                </div>
                 <div>
                     <div class="flex items-center content-center justify-between py-3">
                         <h2>Informacion de Alumnos</h2>
@@ -71,6 +73,11 @@ $filas = ($_SESSION["admin_alum"]);
 
                
                     <div>
+
+                        <div class="h-14 flex items-center content-center justify-end gap-1">
+                            <label for="search">Search: </label>
+                            <input class="border rounded h-10" type="text" id="search" name="" id="">
+                        </div>
                        <div class="flex items-center content-center justify-center justify-items-center" >
 
                            <table class="border-collapse border border-slate-400">

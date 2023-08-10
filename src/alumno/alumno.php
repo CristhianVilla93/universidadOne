@@ -7,7 +7,6 @@ if (!isset($_SESSION["alum"])) {
     die();
 }
 
-var_dump($_SESSION["alum"]);
 
 ?>
 

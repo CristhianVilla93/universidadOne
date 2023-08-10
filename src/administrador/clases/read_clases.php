@@ -2,7 +2,7 @@
 
 session_start();
 
-$filas = ($_SESSION["admin_maes"]);
+$filas = ($_SESSION["admin_clases"]);
 
 
 ?>
@@ -63,12 +63,12 @@ $filas = ($_SESSION["admin_maes"]);
             </nav>
             <div class="p-3">
                 <div class="h-10 flex content-center">
-                    <h1 >Lista de Maestros</h1>
+                    <h1 >Lista de Alumnos</h1>
                 </div>
                 <div>
                     <div class="flex items-center content-center justify-between py-3">
-                        <h2>Informacion de Maestros</h2>
-                        <button class=" w-40 h-12 bg-blue-700 text-white rounded-md"><a  href="">Agregar Maestros</a></button>
+                        <h2>Informacion de Clases</h2>
+                        <button class=" w-40 h-12 bg-blue-700 text-white rounded-md"><a  href="">Agregar Clase</a></button>
                     </div>
 
                
@@ -84,12 +84,10 @@ $filas = ($_SESSION["admin_maes"]);
                                <thead>
                                    <tr>
                                        <th class=" w-24 h-12 border border-slate-300">#</th>
-                                       <th class="w-48  border border-slate-300">Nombre</th>
-                                       <th class="w-48  border border-slate-300">Apellido</th>
-                                       <th class="w-48 border border-slate-300">Email</th>
-                                       <th class="w-48  border border-slate-300">Direccion</th>
-                                       <th class="w-48  border border-slate-300">Date</th>
-                                       <th class="w-48 border border-slate-300">Clase Asiganada</th>
+                                       <th class="w-48 border border-slate-300">Clase</th>
+                                       <th class="w-48  border border-slate-300">Maestro Nombre</th>
+                                       <th class="w-48  border border-slate-300">Maestro Apellido</th>
+                                       <th class="w-48  border border-slate-300">Alumnos Inscritos</th>
                                        <th class="w-48 border border-slate-300">Acciones</th>
                                    </tr>
    
@@ -103,12 +101,10 @@ $filas = ($_SESSION["admin_maes"]);
    
                                        <tr>
                                            <td class="h-12 border border-slate-300 text-center"><?= $resultados["id_mm"] ?></td>
+                                           <td class="border border-slate-300 text-center"><?= $resultados["nombre_materia"] ?></td>
                                            <td class="border border-slate-300 text-center"><?= $resultados["nombre"] ?></td>
                                            <td class="border border-slate-300 text-center"><?= $resultados["Apellido"] ?></td>
-                                           <td class="border border-slate-300 text-center"><?= $resultados["correo"] ?></td>
-                                           <td class="border border-slate-300 text-center"><?= $resultados["direccion"] ?></td>
-                                           <td class="border border-slate-300 text-center"><?= $resultados["fecha_nacimiento"] ?></td>
-                                           <td class="border border-slate-300 text-center"><?= $resultados["nombre_materia"] ?></td>
+                                           <td class="border border-slate-300 text-center"><?= $resultados["id_materia"] ?></td>
                                            <td class="flex gap-3 border items-center content-center justify-center justify-items-center h-12">
                                                <a href="#?id=<?= $resultados["id_ud"] ?>"><img src="/IMG/pencil.svg" alt=""></a>
                                                <a href="/src/administrador/alumnos/delete.php?id_ud=<?= $resultados["id_ud"] ?>"><img src="/IMG/delet.svg" alt=""></a>

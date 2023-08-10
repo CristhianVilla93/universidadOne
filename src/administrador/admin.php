@@ -40,10 +40,10 @@ if (!isset($_SESSION["admi"])) {
             <hr>
             <div class="flex flex-col gap-3 p-3">
                 <h1 class="text-center">MENU ADMINISTRACION</h1>
-                <a class="flex  items-center content-center gap-3" href="#"><img src="/IMG/permisos.svg" alt="">Permisos</a>
-                <a class="flex  items-center content-center gap-3" href="#"><img src="/IMG/maestros.svg" alt="">Maestros</a>
+                <a class="flex  items-center content-center gap-3" href="/src/administrador/permisos/connection/connection_permiso.php"><img src="/IMG/permisos.svg" alt="">Permisos</a>
+                <a class="flex  items-center content-center gap-3" href="/src/administrador/maestros/connection/connection_maestros.php"><img src="/IMG/maestros.svg" alt="">Maestros</a>
                 <a class="flex  items-center content-center gap-3" href="/src/administrador/alumnos/connection/connection_alumnos.php"><img src="/IMG/alumnos.svg" alt="">Alumnos</a>
-                <a class="flex  items-center content-center gap-3" href="#"><img src="/IMG/clases.svg" alt="">Clases</a>
+                <a class="flex  items-center content-center gap-3" href="/src/administrador/clases/connection/connection_clases.php"><img src="/IMG/clases.svg" alt="">Clases</a>
             </div>
         </div>
         <div class="w-full ">

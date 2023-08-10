@@ -62,54 +62,56 @@ $filas = ($_SESSION["admin_alum"]);
                 </ul>
             </nav>
             <div class="p-3">
-                <h1 class="text-red-800">Lista de Alumnos</h1>
+                <h1 >Lista de Alumnos</h1>
                 <div>
-                    <div class="flex justify-between py-3">
+                    <div class="flex items-center content-center justify-between py-3">
                         <h2>Informacion de Alumnos</h2>
-                        <button><a  href="">Agregar Alumno</a></button>
+                        <button class=" w-40 h-12 bg-blue-700 text-white rounded-md"><a  href="">Agregar Alumno</a></button>
                     </div>
 
-                    <br>
+               
                     <div>
-                       
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>DNI</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
-                                    <th>Direccion</th>
-                                    <th>Date</th>
-                                    <th>Acciones</th>
-                                </tr>
+                       <div class="flex items-center content-center justify-center justify-items-center" >
 
-                            </thead>
-
-                            <?php
-                            foreach ($filas as $resultados) {
-
-                            ?>
-                                <tbody>
-
-                                    <tr>
-                                        <td><?= $resultados["id_ud"] ?></td>
-                                        <td><?= $resultados["dni"] ?></td>
-                                        <td><?= $resultados["nombre"] ?></td>
-                                        <td><?= $resultados["Apellido"] ?></td>
-                                        <td><?= $resultados["direccion"] ?></td>
-                                        <td><?= $resultados["fecha_nacimiento"] ?></td>
-                                        <td class="flex gap-2">
-                                            <a href="#?id=<?= $resultados["id_ud"] ?>"><img src="/IMG/pencil.svg" alt=""></a>
-                                            <a href="/src/administrador/alumnos/delete.php?id_ud=<?= $resultados["id_ud"] ?>"><img src="/IMG/delet.svg" alt=""></a>
-                                        </td>
-
-                                    </tr>
-                                <?php
-                            }
-                                ?>
-                                </tbody>
-                        </table>
+                           <table class="border-collapse border border-slate-400">
+                               <thead>
+                                   <tr>
+                                       <th class=" w-24 h-12 border border-slate-300">#</th>
+                                       <th class="w-48 border border-slate-300">DNI</th>
+                                       <th class="w-48  border border-slate-300">Nombre</th>
+                                       <th class="w-48  border border-slate-300">Apellido</th>
+                                       <th class="w-48  border border-slate-300">Direccion</th>
+                                       <th class="w-48  border border-slate-300">Date</th>
+                                       <th class="w-48 border border-slate-300">Acciones</th>
+                                   </tr>
+   
+                               </thead>
+   
+                               <?php
+                               foreach ($filas as $resultados) {
+   
+                               ?>
+                                   <tbody>
+   
+                                       <tr>
+                                           <td class="h-12 border border-slate-300 text-center"><?= $resultados["id_ud"] ?></td>
+                                           <td class="border border-slate-300 text-center"><?= $resultados["dni"] ?></td>
+                                           <td class="border border-slate-300 text-center"><?= $resultados["nombre"] ?></td>
+                                           <td class="border border-slate-300 text-center"><?= $resultados["Apellido"] ?></td>
+                                           <td class="border border-slate-300 text-center"><?= $resultados["direccion"] ?></td>
+                                           <td class="border border-slate-300 text-center"><?= $resultados["fecha_nacimiento"] ?></td>
+                                           <td class="flex gap-3 border items-center content-center justify-center justify-items-center h-12">
+                                               <a href="#?id=<?= $resultados["id_ud"] ?>"><img src="/IMG/pencil.svg" alt=""></a>
+                                               <a href="/src/administrador/alumnos/delete.php?id_ud=<?= $resultados["id_ud"] ?>"><img src="/IMG/delet.svg" alt=""></a>
+                                           </td>
+   
+                                       </tr>
+                                   <?php
+                               }
+                                   ?>
+                                   </tbody>
+                           </table>
+                       </div>
                       
                     </div>
                 </div>

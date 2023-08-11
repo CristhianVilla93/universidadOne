@@ -42,7 +42,7 @@ var_dump($_SESSION["alum"]);
             <div class="flex flex-col gap-3 p-3">
                 <h1 class="text-center">MENU ALUMNOS</h1>
                 <a class="flex  items-center content-center gap-3" href="/src/alumno/calificaciones.php"><img src="/IMG/list.svg" alt="">Ver Calificaciones</a>
-                <a class="flex  items-center content-center gap-3" href="#"><img src="/IMG/maestros.svg" alt="">Administra tus tareas</a>
+                <a class="flex  items-center content-center gap-3" href="/src/alumno/materias_inscritas.php"><img src="/IMG/maestros.svg" alt="">Administra tus tareas</a>
              
             </div>
         </div>

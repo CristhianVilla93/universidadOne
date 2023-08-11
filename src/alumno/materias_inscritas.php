@@ -60,7 +60,7 @@ while ($fila = $stmt->fetch_assoc()) {
             <div class="flex flex-col gap-3 p-3">
                 <h1 class="text-center">MENU ALUMNOS</h1>
                 <a class="flex  items-center content-center gap-3" href="/src/alumno/calificaciones.php"><img src="/IMG/list.svg" alt="">Ver Calificaciones</a>
-                <a class="flex  items-center content-center gap-3" href="#"><img src="/IMG/maestros.svg" alt="">Administra tus tareas</a>
+                <a class="flex  items-center content-center gap-3" href="/src/alumno/materias_inscritas.php"><img src="/IMG/maestros.svg" alt="">Administra tus tareas</a>
              
             </div>
 
@@ -87,11 +87,11 @@ while ($fila = $stmt->fetch_assoc()) {
             </nav>
             <div class="p-3">
                 <div class="h-10 flex content-center">
-                    <h1 >Calificaciones y mensajes de tus clases</h1>
+                    <h1 >Esquema de clases</h1>
                 </div>
                 <div>
                     <div class="flex items-center content-center justify-between py-3">
-                        <h2>Calificaciones y mensajes de tus clases</h2>
+                        <h2>Tus Materias Inscritas</h2>
                         
                     </div>
 
@@ -126,7 +126,7 @@ while ($fila = $stmt->fetch_assoc()) {
                                        <tr>
                                            <td class="h-12 border border-slate-300 text-center"><?php echo $resulta["id_materia"]; ?></td>
                                            <td class="border border-slate-300 text-center"><?php echo $resulta["nombre_materia"]; ?></td>
-                                           <td class="border border-slate-300 text-center"><?php echo $resulta["calificacion"]; ?></td>
+                                           <td class="flex border items-center content-center justify-center justify-items-center h-12"><img src="/IMG/journal-x.svg" alt=""></td>
                                            </td>
    
                                        </tr>

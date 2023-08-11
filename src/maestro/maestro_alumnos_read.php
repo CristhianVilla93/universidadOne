@@ -1,7 +1,9 @@
 <?php
+
+
 session_start();
 
-$Id = ($_SESSION["alum"]["id_ud"]);
+$Id = ($_SESSION["maes"]["id_ud"]);
 
 require_once($_SERVER["DOCUMENT_ROOT"] . "/src/connection.php");
 
@@ -9,23 +11,27 @@ $query = "select
 *
 from
 usuarios_datos 
-inner join alumno_materia  on
- alumno_materia.alumno_id  = usuarios_datos.id_ud 
+inner join maestro_materia on
+ maestro_materia.maestro_id  = usuarios_datos.id_ud 
  inner join materias on
- materias.id_materia = alumno_materia.materia_id 
- where usuarios_datos.id_ud = '$Id'
+ materias.id_materia = maestro_materia.materia_id 
+ inner join alumno_materia on
+ alumno_materia.materia_id  = materias.id_materia 
+ where usuarios_datos.id_ud  = '$Id'
 
  ";
 
 $stmt = $conn->query($query);
-$resultadoCompleto = [];
+$resultadoComp = [];
 
 
 while ($fila = $stmt->fetch_assoc()) {
-    $resultadoCompleto [] = $fila;
+    $resultadoComp [] = $fila;
 }
 
 ?>
+
+
 
 
 
@@ -53,28 +59,22 @@ while ($fila = $stmt->fetch_assoc()) {
 
             <hr>
             <div>
-                <h1>Alumno</h1>
-                <p><?php echo $_SESSION["alum"]["nombre"]?> <?php echo $_SESSION["alum"]["Apellido"]?></p>
+                <h1>Maestro</h1>
+                <p><?php echo $_SESSION["maes"]["correo"]?> </p>
             </div>
             <hr>
             <div class="flex flex-col gap-3 p-3">
-                <h1 class="text-center">MENU ALUMNOS</h1>
-                <a class="flex  items-center content-center gap-3" href="/src/alumno/calificaciones.php"><img src="/IMG/list.svg" alt="">Ver Calificaciones</a>
-                <a class="flex  items-center content-center gap-3" href="/src/alumno/materias_inscritas.php"><img src="/IMG/maestros.svg" alt="">Administra tus tareas</a>
-             
+                <h1 class="text-center">MENU MAESTROS</h1>
+                <a class="flex  items-center content-center gap-3" href="/src/maestro/maestro_alumnos_read.php"><img src="/IMG/alumnos.svg" alt="">Alumnos</a>          
             </div>
-
-            
-
-
         </div>
-        <div class="w-full">
+        <div class="w-full ">
             <nav class="w-full ">
                 <ul class="w-full flex justify-between p-3">
                     <li class="flex  items-center content-center gap-3"><img src="/IMG/menu.svg" alt="">Home</li>
                     <li>
 
-                        <p class="mb-8"><?php echo $_SESSION["alum"]["nombre"]?> <?php echo $_SESSION["alum"]["Apellido"]?></p>
+                        <p class="mb-8"><?php echo $_SESSION["maes"]["correo"]?></p>
 
                         <div class="text-center" id="cuadrodesple">
                             <ul>
@@ -87,11 +87,11 @@ while ($fila = $stmt->fetch_assoc()) {
             </nav>
             <div class="p-3">
                 <div class="h-10 flex content-center">
-                    <h1 >Calificaciones y mensajes de tus clases</h1>
+                    <h1 >Alumnos de la clase de </h1>
                 </div>
                 <div>
                     <div class="flex items-center content-center justify-between py-3">
-                        <h2>Calificaciones y mensajes de tus clases</h2>
+                        <h2>Alumnos de la clase de </h2>
                         
                     </div>
 
@@ -108,8 +108,10 @@ while ($fila = $stmt->fetch_assoc()) {
                                <thead>
                                    <tr>
                                        <th class=" w-24 h-12 border border-slate-300">#</th>
-                                       <th class="w-48 border border-slate-300">Nombre de Clase</th>
+                                       <th class="w-48 border border-slate-300">ID de Alumno</th>
                                        <th class="w-48  border border-slate-300">Calificacion</th>
+                                       <th class="w-48  border border-slate-300">Mensaje</th>
+                                       <th class="w-48  border border-slate-300">Acciones</th>
                                    </tr>
    
                                </thead>
@@ -118,15 +120,20 @@ while ($fila = $stmt->fetch_assoc()) {
 
                                
 
-                               foreach ($resultadoCompleto as $resultad) {
+                               foreach ($resultadoComp as $resulta) {
                                 
                                ?>
                                    <tbody>
    
                                        <tr>
-                                           <td class="h-12 border border-slate-300 text-center"><?php echo $resultad["id_materia"]; ?></td>
-                                           <td class="border border-slate-300 text-center"><?php echo $resultad["nombre_materia"]; ?></td>
-                                           <td class="border border-slate-300 text-center"><?php echo $resultad["calificacion"]; ?></td>
+                                           <td class="h-12 border border-slate-300 text-center"><?php echo $resulta["id_am"]; ?></td>
+                                           <td class="border border-slate-300 text-center"><?php echo $resulta["alumno_id"]; ?></td>
+                                           <td class="border border-slate-300 text-center"><?php echo $resulta["calificacion"]; ?></td>
+                                           <td class="border border-slate-300 text-center text-blue-800">No hay mensaje</td>
+                                           <td class="flex gap-3 border items-center content-center justify-center justify-items-center h-12">
+                                               <a href="#?id=<?= $resultados["id_ud"] ?>"><img src="/IMG/journal-plus.svg" alt=""></a>
+                                               <a href="#?id_ud=<?= $resultados["id_ud"] ?>"><img src="/IMG/send-plus.svg" alt=""></a>
+                                           </td>
                                            </td>
    
                                        </tr>

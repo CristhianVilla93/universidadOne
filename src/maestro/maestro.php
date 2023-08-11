@@ -40,7 +40,7 @@ if (!isset($_SESSION["maes"])) {
             <hr>
             <div class="flex flex-col gap-3 p-3">
                 <h1 class="text-center">MENU MAESTROS</h1>
-                <a class="flex  items-center content-center gap-3" href="#"><img src="/IMG/alumnos.svg" alt="">Alumnos</a>          
+                <a class="flex  items-center content-center gap-3" href="/src/maestro/maestro_alumnos_read.php"><img src="/IMG/alumnos.svg" alt="">Alumnos</a>          
             </div>
         </div>
         <div class="w-full ">

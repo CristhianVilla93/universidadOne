@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+
+$filas = ($_SESSION["admin_maes"]);
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,11 +63,11 @@
             </nav>
             <div class="p-3">
                 <div class="h-10 flex content-center">
-                    <h1 >Agregar Alumno</h1>
+                    <h1 >Editar Permisos</h1>
                 </div>
                 <div>
                     <div class="flex items-center content-center justify-between py-3">
-                        <h2>Informacion para agregar Alumnos</h2>
+                        <h2>Informacion para editar permisos</h2>
                       
                     </div>
 
@@ -71,7 +79,7 @@
                             <input class="border rounded h-10" type="text" id="search" name="" id="">
                         </div>
                        <div class="flex items-center content-center justify-center justify-items-center" >
-                        <form class="border" action="/src/administrador/maestros/connection/creacion.php" method="post">
+                        <form class="border" action="/src/administrador/permisos/connection/editar.php" method="post">
                         
                         <label for="dni">DNI</label>
                         <input class="border" type="text" id="dni" name="dni">

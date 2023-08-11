@@ -87,6 +87,9 @@
                         <br>
                         <label for="date">Fecha de Nacimiento</label>
                         <input class="border" type="date" id="date" name="date">  
+                        <br>
+                        <label for="rol">Rol_id</label>
+                        <input class="border" type="rol" id="date" name="rol" value="3">  
 
 
                         <input type="submit" value="Agregar">

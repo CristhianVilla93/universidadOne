@@ -104,7 +104,7 @@ $filas = ($_SESSION["admin_maes"]);
                                            <td class="border border-slate-300 text-center"><?= $resultados["nombre_rol"] ?></td>
                                            <td class="border border-slate-300 text-center"></td>
                                            <td class="flex gap-3 border items-center content-center justify-center justify-items-center h-12">
-                                               <a href="#?id=<?= $resultados["id_ud"] ?>"><img src="/IMG/pencil.svg" alt=""></a>
+                                               <a href="/src/administrador/permisos/editar_permisos.php?id=<?= $resultados["id_ud"] ?>"><img src="/IMG/pencil.svg" alt=""></a>
                                            </td>
    
                                        </tr>

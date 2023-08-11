@@ -68,7 +68,7 @@ $filas = ($_SESSION["admin_alum"]);
                 <div>
                     <div class="flex items-center content-center justify-between py-3">
                         <h2>Informacion de Alumnos</h2>
-                        <button class=" w-40 h-12 bg-blue-700 text-white rounded-md"><a  href="">Agregar Alumno</a></button>
+                        <button class=" w-40 h-12 bg-blue-700 text-white rounded-md"><a  href="/src/administrador/alumnos/crear_alumnos.php">Agregar Alumno</a></button>
                     </div>
 
                

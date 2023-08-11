@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["correo"]) && isset($_
     $correo = $_POST["correo"];
     $contra = $_POST["pass"];
 
-    $query = "SELECT*FROM usuarios_login WHERE correo='$correo'";
+    $query = "SELECT*FROM usuarios_datos WHERE correo='$correo'";
 
     $resultado = $conn->query($query);
     // var_dump($resultado);
@@ -15,38 +15,38 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["correo"]) && isset($_
         if ($resultado->num_rows === 1) { //administrador
             // Corroborar si la contraseña hasheada es igual a la ingresada por el usuario
             $resultado1 = $resultado->fetch_assoc();
-            $datosID = $resultado1["datos_id"];
+            // $datosID = $resultado1["datos_id"];
 
-            $query = "select
-             *
-            from
-        usuarios_datos
-        inner join usuarios_login  on
-        usuarios_login.datos_id  = usuarios_datos.id_ud
-        where usuarios_datos.id_ud = '$datosID'";
-            $resultado2 = $conn->query($query);
-            $resultado2 = $resultado2->fetch_assoc();
+        //     $query = "select
+        //      *
+        //     from
+        // usuarios_datos
+        // inner join usuarios_login  on
+        // usuarios_login.datos_id  = usuarios_datos.id_ud
+        // where usuarios_datos.id_ud = '$datosID'";
+        //     $resultado2 = $conn->query($query);
+        //     $resultado2 = $resultado2->fetch_assoc();
 
-            $rolID = $resultado2["rol_id"];
+        //     $rolID = $resultado2["rol_id"];
 
-            if ($rolID == 1) {
+            if ($resultado1["rol_id"] == 1) {
 
                 session_start();
-                $_SESSION["admi"] = $resultado2;
+                $_SESSION["admi"] = $resultado1;
                 header("location:\src\administrador\admin.php");
             }
 
-            if ($rolID == 2) {
+            if ($resultado1["rol_id"] == 2) {
 
                 session_start();
-                $_SESSION["maes"] = $resultado2;
+                $_SESSION["maes"] = $resultado1;
                 header("location:\src\maestro\maestro.php");
             }
 
-            if ($rolID == 3) {
+            if ($resultado1["rol_id"] == 3) {
 
                 session_start();
-                $_SESSION["alum"] = $resultado2;
+                $_SESSION["alum"] = $resultado1;
                 header("location:\src\alumno\alumno.php");
             }
         } else {

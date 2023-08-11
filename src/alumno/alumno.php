@@ -7,7 +7,7 @@ if (!isset($_SESSION["alum"])) {
     die();
 }
 
-
+var_dump($_SESSION["alum"]);
 ?>
 
 
@@ -41,7 +41,7 @@ if (!isset($_SESSION["alum"])) {
             <hr>
             <div class="flex flex-col gap-3 p-3">
                 <h1 class="text-center">MENU ALUMNOS</h1>
-                <a class="flex  items-center content-center gap-3" href="/src/alumno/connectionAlumn/datos_db.php"><img src="/IMG/list.svg" alt="">Ver Calificaciones</a>
+                <a class="flex  items-center content-center gap-3" href="/src/alumno/calificaciones.php"><img src="/IMG/list.svg" alt="">Ver Calificaciones</a>
                 <a class="flex  items-center content-center gap-3" href="#"><img src="/IMG/maestros.svg" alt="">Administra tus tareas</a>
              
             </div>

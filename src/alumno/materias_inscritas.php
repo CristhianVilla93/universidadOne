@@ -1,11 +1,33 @@
 <?php
-
 session_start();
 
-$filas = ($_SESSION["admin_maes"]);
+$Id = ($_SESSION["alum"]["id_ud"]);
 
+require_once($_SERVER["DOCUMENT_ROOT"] . "/src/connection.php");
+
+$query = "select
+*
+from
+usuarios_datos 
+inner join alumno_materia  on
+ alumno_materia.alumno_id  = usuarios_datos.id_ud 
+ inner join materias on
+ materias.id_materia = alumno_materia.materia_id 
+ where usuarios_datos.id_ud = '$Id'
+
+ ";
+
+$stmt = $conn->query($query);
+$resultadoComple = [];
+
+
+while ($fila = $stmt->fetch_assoc()) {
+    $resultadoComple [] = $fila;
+}
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,10 +35,9 @@ $filas = ($_SESSION["admin_maes"]);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link href="/dist/output.css" rel="stylesheet">
     <link rel="stylesheet" href="/src/administrador/estilo/cuadro.css">
     <script src="/src/administrador/cuadro.js" defer></script>
-    <link href="/dist/output.css" rel="stylesheet">
     <title>Document</title>
 </head>
 
@@ -32,17 +53,20 @@ $filas = ($_SESSION["admin_maes"]);
 
             <hr>
             <div>
-                <h1>Admin</h1>
-                <p>Administrador</p>
+                <h1>Alumno</h1>
+                <p><?php echo $_SESSION["alum"]["nombre"]?> <?php echo $_SESSION["alum"]["Apellido"]?></p>
             </div>
             <hr>
             <div class="flex flex-col gap-3 p-3">
-                <h1 class="text-center">MENU ADMINISTRACION</h1>
-                <a class="flex  items-center content-center gap-3" href="/src/administrador/permisos/connection/connection_permiso.php"><img src="/IMG/permisos.svg" alt="">Permisos</a>
-                <a class="flex  items-center content-center gap-3" href="/src/administrador/maestros/connection/connection_maestros.php"><img src="/IMG/maestros.svg" alt="">Maestros</a>
-                <a class="flex  items-center content-center gap-3" href="/src/administrador/alumnos/connection/connection_alumnos.php"><img src="/IMG/alumnos.svg" alt="">Alumnos</a>
-                <a class="flex  items-center content-center gap-3" href="/src/administrador/clases/connection/connection_clases.php"><img src="/IMG/clases.svg" alt="">Clases</a>
+                <h1 class="text-center">MENU ALUMNOS</h1>
+                <a class="flex  items-center content-center gap-3" href="/src/alumno/calificaciones.php"><img src="/IMG/list.svg" alt="">Ver Calificaciones</a>
+                <a class="flex  items-center content-center gap-3" href="#"><img src="/IMG/maestros.svg" alt="">Administra tus tareas</a>
+             
             </div>
+
+            
+
+
         </div>
         <div class="w-full">
             <nav class="w-full ">
@@ -50,24 +74,24 @@ $filas = ($_SESSION["admin_maes"]);
                     <li class="flex  items-center content-center gap-3"><img src="/IMG/menu.svg" alt="">Home</li>
                     <li>
 
-                        <p class="mb-8">Administrador</p>
+                        <p class="mb-8"><?php echo $_SESSION["alum"]["nombre"]?> <?php echo $_SESSION["alum"]["Apellido"]?></p>
 
                         <div class="text-center" id="cuadrodesple">
                             <ul>
-                                <li><a href="#"> <span>Home</span></a> / <a href="/src/administrador/admin.php"> <span>Dashboard</span></li>
+                                <li ><a class="flex  items-center content-center gap-3" href="#"><img src="/IMG/person-circle.svg" alt=""> <span>Perfil</span></a></li>
                             </ul>
-                            <a href="/src/logout.php"> <span>Logout</span></a>
+                            <a class="flex  items-center content-center gap-3" href="/src/logout.php"><img src="/IMG/input.svg" alt=""> <span>Logout</span></a>
                         </div>
                     </li>
                 </ul>
             </nav>
             <div class="p-3">
                 <div class="h-10 flex content-center">
-                    <h1 >Lista de Permisos</h1>
+                    <h1 >Calificaciones y mensajes de tus clases</h1>
                 </div>
                 <div>
                     <div class="flex items-center content-center justify-between py-3">
-                        <h2>Informacion de Permisos</h2>
+                        <h2>Calificaciones y mensajes de tus clases</h2>
                         
                     </div>
 
@@ -84,28 +108,25 @@ $filas = ($_SESSION["admin_maes"]);
                                <thead>
                                    <tr>
                                        <th class=" w-24 h-12 border border-slate-300">#</th>
-                                       <th class="w-48 border border-slate-300">Email</th>
-                                       <th class="w-48  border border-slate-300">Permiso</th>
-                                       <th class="w-48  border border-slate-300">Estado</th>
-                                       <th class="w-48 border border-slate-300">Acciones</th>
+                                       <th class="w-48 border border-slate-300">Materia</th>
+                                       <th class="w-48  border border-slate-300">Darse de baja</th>
                                    </tr>
    
                                </thead>
    
                                <?php
-                               foreach ($filas as $resultados) {
-   
+
+                               
+
+                               foreach ($resultadoComple as $resulta) {
+                                
                                ?>
                                    <tbody>
    
                                        <tr>
-                                           <td class="h-12 border border-slate-300 text-center"><?= $resultados["id_ud"] ?></td>
-                                           <td class="border border-slate-300 text-center"><?= $resultados["correo"] ?></td>
-                                           <td class="border border-slate-300 text-center"><?= $resultados["nombre_rol"] ?></td>
-                                           <td class="border border-slate-300 text-center"></td>
-                                           <td class="flex gap-3 border items-center content-center justify-center justify-items-center h-12">
-                                               <a href="#?id=<?= $resultados["id_ud"] ?>"><img src="/IMG/pencil.svg" alt=""></a>
-                                               <a href="/src/administrador/alumnos/delete.php?id_ud=<?= $resultados["id_ud"] ?>"><img src="/IMG/delet.svg" alt=""></a>
+                                           <td class="h-12 border border-slate-300 text-center"><?php echo $resulta["id_materia"]; ?></td>
+                                           <td class="border border-slate-300 text-center"><?php echo $resulta["nombre_materia"]; ?></td>
+                                           <td class="border border-slate-300 text-center"><?php echo $resulta["calificacion"]; ?></td>
                                            </td>
    
                                        </tr>

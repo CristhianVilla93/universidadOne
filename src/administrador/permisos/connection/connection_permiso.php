@@ -8,8 +8,6 @@ from
 roles
 inner join usuarios_datos on
  roles.id_rol  = usuarios_datos.rol_id 
-inner join usuarios_login on
-usuarios_datos.id_ud  = usuarios_login.datos_id 
 ";
 
 $stmt = $conn->query($query);
